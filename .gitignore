@@ -7,3 +7,4 @@ analise/benchmark
 *.csv
 *.txt
 *.png
+*.out
