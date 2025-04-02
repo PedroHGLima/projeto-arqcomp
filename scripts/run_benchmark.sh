@@ -10,7 +10,8 @@ echo "Memory Information:"
 free -h
 echo "----------------------------------------"
 
-make # -f Makefile clean
+make clean
+make
 
 cd "$SCRIPT_DIR/../analise"
 python3 benchmark.py && \

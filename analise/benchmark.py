@@ -13,7 +13,7 @@ def main():
     os.makedirs(f"{os.path.dirname(__file__)}/benchmark", exist_ok=True)
     
     dados = []
-    pbar = tqdm(product(n_sizes, range(n_repeats)), total=(len(n_sizes) * n_repeats))
+    pbar = tqdm(product(n_sizes, range(n_repeats)), total=(len(n_sizes) * n_repeats), disable=None)
     for n, i in pbar:
         pbar.set_description(f"{n=} {i=}")
         # rodar o programa
@@ -42,6 +42,7 @@ def main():
                 )
     
     df = pd.DataFrame(dados)
+    print(f"Salvando o csv em: {os.path.dirname(__file__)}/benchmark/benchmark.csv")
     df.to_csv(f"{os.path.dirname(__file__)}/benchmark/benchmark.csv", index=False)
 
 
