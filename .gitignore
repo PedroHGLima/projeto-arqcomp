@@ -1,2 +1,8 @@
+.vscode
+
+analise/benchmark
+
 *.exe
 *.o
+*.csv
+*.txt

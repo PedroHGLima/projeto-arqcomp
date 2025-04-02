@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     dgemm(n, A, B, C);
 	end = clock();
 	time_taken = ((double)(end - start)) / CLOCKS_PER_SEC * 1000;
-	printf("DGEMM: %.2f ms\n", time_taken);
+	printf("DGEMM %.3f ms\n", time_taken);
 
 	// Testar a funcao dgemm otimizada com AVX
 	zerar_matriz(C, n);
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	avx_dgemm(n, A, B, C);
 	end = clock();
 	time_taken = ((double)(end - start)) / CLOCKS_PER_SEC * 1000;
-	printf("AVX: %.2f ms\n", time_taken);
+	printf("AVX %.3f ms\n", time_taken);
 
 	// Printar a matriz C
 	// for (size_t i = 0; i < n; i++) {
