@@ -6,3 +6,4 @@ analise/benchmark
 *.o
 *.csv
 *.txt
+*.png
