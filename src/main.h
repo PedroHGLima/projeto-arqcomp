@@ -7,12 +7,12 @@
 #define	SEED 42
 
 void get_args(int argc, char* argv[], size_t* n) {
-	if (argc > 1) {
-		*n = strtoul(argv[1], NULL, 10);
-	} else {
-		fprintf(stderr, "Uso: %s <size>\n", argv[0]);
-		exit(EXIT_FAILURE);
-	}
+    if (argc > 1) {
+        *n = strtoul(argv[1], NULL, 10);
+    } else {
+        fprintf(stderr, "Uso: %s <size>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
 }
 
 void zerar_matriz(double* matriz, size_t n) {
