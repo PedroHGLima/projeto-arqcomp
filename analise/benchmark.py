@@ -3,7 +3,9 @@ import pandas as pd
 from tqdm import tqdm
 from itertools import product
 
-n_sizes = [2**n for n in range(4, 14)]
+from dataset import extrair_dados
+
+n_sizes = [2**n for n in range(4, 11)]
 n_repeats = 10
 
 
@@ -26,20 +28,9 @@ def main():
             break
 
         # pegar o resultado
-        with open(arquivo, "r") as f:
-            lines = f.readlines()[5:] # pular para o resultado
-            for line in lines:
-                metodo = line.split(' ')[0]
-                tempo = float(line.split(' ')[1]) # ms
-                
-                dados.append(
-                    {
-                        "n": n,
-                        "run": i,
-                        "metodo": metodo,
-                        "tempo": tempo
-                    }
-                )
+        dados_arquivo = extrair_dados(arquivo, n, i)
+        for dado in dados_arquivo:
+            dados.append(dado)
     
     df = pd.DataFrame(dados)
     print(f"Salvando o csv em: {os.path.dirname(__file__)}/benchmark/benchmark.csv")
