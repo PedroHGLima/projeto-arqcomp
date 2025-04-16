@@ -4,8 +4,8 @@ int main(int argc, char* argv[]) {
     srand(SEED);
     size_t n, n2;
     get_args(argc, argv, &n);
-    if (n == 0) {
-        fprintf(stderr, "Tamanho da matriz deve ser maior que 0\n");
+    if (n == 0 || n%4 != 0) {
+        fprintf(stderr, "Tamanho da matriz deve ser maior que 0 e multiplo de 4\n");
         return 1;
     }
     n2 = n * n;
@@ -30,11 +30,19 @@ int main(int argc, char* argv[]) {
     printf("Tempo de execucao: \n");
     
     // Testar a funcao dgemm original
+    zerar_matriz(C, n);
     start = clock();
     dgemm(n, A, B, C);
     end = clock();
     time_taken = ((double)(end - start)) / CLOCKS_PER_SEC * 1000;
     printf("DGEMM %.3f ms\n", time_taken);
+    // Printar a matriz C
+    for (size_t i = 0; i < n; i++) {
+    	for (size_t j = 0; j < n; j++) {
+    		printf("%lf ", C[i * n + j]);
+    	}
+    	printf("\n");
+    }
 
     // Testar a funcao dgemm otimizada com AVX
     zerar_matriz(C, n);
@@ -43,14 +51,28 @@ int main(int argc, char* argv[]) {
     end = clock();
     time_taken = ((double)(end - start)) / CLOCKS_PER_SEC * 1000;
     printf("AVX %.3f ms\n", time_taken);
-
     // Printar a matriz C
-    // for (size_t i = 0; i < n; i++) {
-    // 	for (size_t j = 0; j < n; j++) {
-    // 		printf("%lf ", C[i * n + j]);
-    // 	}
-    // 	printf("\n");
-    // }
+    for (size_t i = 0; i < n; i++) {
+    	for (size_t j = 0; j < n; j++) {
+    		printf("%lf ", C[i * n + j]);
+    	}
+    	printf("\n");
+    }
+
+    // Testar a funcao dgemm otimizada com AVX e loop unrolling
+    zerar_matriz(C, n);
+    start = clock();
+    loop_unr(n, A, B, C);
+    end = clock();
+    time_taken = ((double)(end - start)) / CLOCKS_PER_SEC * 1000;
+    printf("LOOP_UNROLLING %.3f ms\n", time_taken);
+    // Printar a matriz C
+    for (size_t i = 0; i < n; i++) {
+    	for (size_t j = 0; j < n; j++) {
+    		printf("%lf ", C[i * n + j]);
+    	}
+    	printf("\n");
+    }
 
     free(A);
     free(B);
