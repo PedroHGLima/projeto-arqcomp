@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <x86intrin.h>
 
-#define UNROLL (4)
+#define UNROLL 4
 
 /**
  * @brief Funcao DGEMM original
@@ -39,4 +39,4 @@ void avx_dgemm (size_t n, double* A, double* B, double* C);
  * @param B Operando B
  * @param C Resultado
  */
-void loop_unr (int n, double* A, double* B, double* C);
+void loop_unr (size_t n, double* A, double* B, double* C);
