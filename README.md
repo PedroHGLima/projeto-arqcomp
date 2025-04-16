@@ -1,7 +1,7 @@
 # Arquitetura de Computadores
 Este repositório contém o código fonte do projeto de arquitetura de computadores.
 
-## Descrição
+## Descrição 
 O projeto consiste em testar diversas implementações de um algoritmo de multiplicação de matrizes, utilizando diferentes abordagens e técnicas de otimização. O objetivo é comparar o desempenho das implementações em termos de tempo de execução e uso de memória.
 
 ## Estrutura do Repositório
