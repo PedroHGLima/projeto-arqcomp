@@ -23,3 +23,7 @@ O programa responsável pelos benchmarks está na [pasta analise](analise). Ele 
 ```bash
 ./scripts/run_benchmark.sh
 ```
+
+# Grupo
+- [Pedro Lima](https://github.com/PedroHGLima)
+
