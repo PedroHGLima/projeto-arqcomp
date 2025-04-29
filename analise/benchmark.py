@@ -5,7 +5,7 @@ from itertools import product
 
 from dataset import extrair_dados
 
-n_sizes = [2**n for n in range(4, 11)]
+n_sizes = [2**n for n in range(6, 11)]
 n_repeats = 10
 
 
@@ -17,6 +17,8 @@ def main():
     dados = []
     pbar = tqdm(product(n_sizes, range(n_repeats)), total=(len(n_sizes) * n_repeats), disable=None)
     for n, i in pbar:
+        if pbar.disable:
+            print(f"{n=}, {i=}")
         pbar.set_description(f"{n=} {i=}")
         # rodar o programa
         arquivo = f"{os.path.dirname(__file__)}/benchmark/run_{n}_{i:02d}.txt"
