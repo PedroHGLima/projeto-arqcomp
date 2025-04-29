@@ -19,8 +19,7 @@ def main():
         df_temp = df_grouped[df_grouped["metodo"] == metodo]
         plt.errorbar(
             df_temp["n"], df_temp["tempo_medio"], yerr=df_temp["tempo_std"],
-            # add in the label the percentage of time
-            label=f"{metodo}: ({df_temp['tempo_medio'].mean()/df_grouped['tempo_dgemm'].mean()*100:.2f}%)",
+            label=f"{metodo:<7}: {df_temp['tempo_medio'].mean()/df_grouped['tempo_dgemm'].mean():>7.2%}",
             capsize=5, fmt='-o'
         )
     
@@ -31,7 +30,7 @@ def main():
     plt.title("Tempo de execução x Tamanho da matriz")
     plt.xticks(df_grouped["n"].unique())
     plt.tight_layout()
-    plt.legend()
+    plt.legend(prop={"family": "monospace"}, title="Método : % DGEMM")
     plt.grid()
     plt.savefig(f"{os.path.dirname(__file__)}/benchmark/benchmark.png")
 
