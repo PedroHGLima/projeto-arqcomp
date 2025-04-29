@@ -1,3 +1,4 @@
+from cProfile import label
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,7 +10,8 @@ def main():
     
     df_grouped = df.groupby(["n", "metodo"]).agg(
         tempo_medio=("tempo", "mean"),
-        tempo_std=("tempo", "std")
+        tempo_std=("tempo", "std"),
+        tempo_dgemm=("tempo", lambda x: x[df["metodo"] == "DGEMM"].mean()),
     ).reset_index()
     
     plt.figure()
@@ -17,7 +19,9 @@ def main():
         df_temp = df_grouped[df_grouped["metodo"] == metodo]
         plt.errorbar(
             df_temp["n"], df_temp["tempo_medio"], yerr=df_temp["tempo_std"],
-            label=metodo, capsize=5, fmt='-o'
+            # add in the label the percentage of time
+            label=f"{metodo}: ({df_temp['tempo_medio'].mean()/df_grouped['tempo_dgemm'].mean()*100:.2f}%)",
+            capsize=5, fmt='-o'
         )
     
     plt.xscale("log", base=2)
