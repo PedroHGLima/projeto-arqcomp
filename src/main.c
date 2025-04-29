@@ -41,6 +41,10 @@ int main(int argc, char* argv[]) {
     time_taken = multiplicar(n, A, B, Ref, loop_unr);
     if (time_taken!=-1) printf("AVX+LU %.3f ms\n", time_taken);
 
+    // Testar a funcao dgemm otimizada com AVX e cache blocking
+    time_taken = multiplicar(n, A, B, Ref, cache_blocking);
+    if (time_taken!=-1) printf("AVX+CB %.3f ms\n", time_taken);
+
     free(A);
     free(B);
     free(Ref);
