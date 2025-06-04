@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -mavx -O3
+CFLAGS = -Wall -mavx -O3 -fopenmp
 
 DGEMM_EXEC = ../bin/dgemm.exe
 DGEMM_OBJS = main.o dgemm.o

@@ -54,3 +54,16 @@ void loop_unr (size_t n, double* A, double* B, double* C);
  */
 void cache_blocking(size_t n, double* A, double* B, double* C);
 void do_block(int n, int si, int sj, int sk, double *A, double *B, double *C);
+
+/**
+ * @brief DGEMM otimizada usando OpenMP
+ * pg. 1091
+ * fig 6.25
+ * 
+ * @param n Tamanho da matriz (n x n)
+ * @param A Operando A
+ * @param B Operando B
+ * @param C Resultado
+ */
+void openMP (size_t n, double* A, double* B, double* C);
+void do_block_MP(int n, int si, int sj, int sk, double *A, double *B, double *C);

@@ -45,6 +45,10 @@ int main(int argc, char* argv[]) {
     time_taken = multiplicar(n, A, B, Ref, cache_blocking);
     if (time_taken!=-1) printf("AVX+CB %.3f ms\n", time_taken);
 
+    // Testar a funcao dgemm otimizada com OpenMP
+    time_taken = multiplicar(n, A, B, Ref, openMP);
+    if (time_taken!=-1) printf("OMP %.3f ms\n", time_taken);
+
     free(A);
     free(B);
     free(Ref);
