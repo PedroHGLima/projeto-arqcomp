@@ -5,7 +5,9 @@ from itertools import product
 
 from dataset import extrair_dados
 
-n_sizes = [2**n for n in range(6, 11)]
+n_sizes = [2**n for n in range(6, 10)]
+n_sizes += [1024*n for n in range(1, 5)]
+print(f"n_sizes: {n_sizes}")
 n_repeats = 10
 
 

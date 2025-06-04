@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
     }
 
     double time_taken;
-    dgemm(n, A, B, Ref);
+    openMP(n, A, B, Ref);
     printf("Tempo de execucao: \n");
     
     // Testar a funcao dgemm original
