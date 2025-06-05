@@ -28,3 +28,4 @@ O programa responsável pelos benchmarks está na [pasta analise](analise). Ele 
 - [Pedro Lima](https://github.com/PedroHGLima)
 - [Gabriel Liporace](https://github.com/liporace-g)
 - [Erick Pessoa](https://github.com/Erickdeop)
+- [Katarine Melo](https://github.com/ka-lucas)
